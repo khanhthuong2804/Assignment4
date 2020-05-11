@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of Assignment4 is to ...
+The goal of Assignment4 is to creat a new package as required on coursera
 
 ## Installation
 
