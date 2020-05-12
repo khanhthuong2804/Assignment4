@@ -1,14 +1,21 @@
 Package: Assignment4
 Type: Package
-Title: create a fars package 
+Title: create a fars functions 
 Version: 0.1.0
 Author: kt
-Maintainer: The package maintainer <yourself@somewhere.net>
+Maintainer: kt <yourself@somewhere.net>
 Description: The package is built as the assignment for the course on coursera
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.0
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
+Imports: dplyr,
+readr,
+tidyr,
+graphics,
+maps
