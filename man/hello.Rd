@@ -1,12 +1,16 @@
 \name{hello}
 \alias{hello}
-\title{Hello, World!}
+\title{Assignment4}
 \usage{
 hello()
 }
 \description{
-Prints 'Hello, world!'.
+Prints 'package to build function as assignment on coursera'.
 }
 \examples{
-hello()
+fars_read(),
+make_filename(),
+fars_read_years(),
+fars_summarize_years(),
+fars_map_state()
 }

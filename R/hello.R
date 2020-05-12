@@ -1,15 +1,13 @@
 
-# Some useful keyboard shortcuts for package authoring:
-#
-#   Install Package:           'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
-
-
-
-# title function: fars_read of package Assignment4
-#' @description
+#' title : Assignment4
+#'@title Assignment4
+#'@author kt
+#'@docType
+#'@description package to build function as assignment on coursera
+#'
 # check existence of data file. if the file doesn't exist there is stop message
+#'Create file of data
+system.file("extdata","Assignment4", package = "Assignment4")
 #' @param filename a string with the file name
 #' @return to return the file
 #' @examples
@@ -19,12 +17,11 @@
 #' }
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
+#' @example
+#' fars_read(accident_2015.csv)
 #' @export    export the function, so users will have direct access to it when they load the package
 
-system.file("extdata","Assignment4", package = "Assignment4")
 
-
-# Create functions
 fars_read <- function(filename) {
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
@@ -33,10 +30,37 @@ fars_read <- function(filename) {
   })
   dplyr::tbl_df(data)
 }
+
+
+
+
+#'Create custom filename
+#'
+#'
+#' @param year is used in the filename string
+#'
+#' @return This function returns a string with the filename customized with given year
+#'
+#' @examples
+#' make_filename(2015)
+#' @export
 make_filename <- function(year) {
   year <- as.integer(year)
   sprintf("accident_%d.csv.bz2", year)
 }
+
+
+#' Read data
+
+
+#' @param years displayed
+#' @return returns a list with the month and year columns from the file
+#' @importFrom magrittr "%>%"
+#' @importFrom dplyr mutate select
+#' @example
+#' fars_read_years(2015)
+#' @export
+#'
 fars_read_years <- function(years) {
   lapply(years, function(year) {
     file <- make_filename(year)
@@ -50,6 +74,19 @@ fars_read_years <- function(years) {
     })
   })
 }
+
+
+#'Summarize the data selected by the fars_read_years function
+#'
+#' @param years is used
+#' @return returns a list of the summarized data for one or more years
+#' @importFrom magrittr "%>%"
+#' @importFrom dplyr bind_rows group_by summarize
+#' @importFrom tidyr spread
+#' @example
+#' fars_summarize_years(2015)
+#' @export
+#'
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
@@ -57,6 +94,21 @@ fars_summarize_years <- function(years) {
     dplyr::summarize(n = n()) %>%
     tidyr::spread(year, n)
 }
+
+
+#'mapping datapoints and state
+
+#' @param state what state data is to be displayed
+#' @param year of data is to be displayed
+#'
+#' @return returns a map of the given state and the datapoints
+#' @importFrom magrittr "%>%"
+#' @importFrom maps map
+#' @importFrom graphics points
+#' @example
+#' fars_map_state()
+#' @export
+#'
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)
@@ -77,8 +129,5 @@ fars_map_state <- function(state.num, year) {
     graphics::points(LONGITUD, LATITUDE, pch = 46)
   })
 }
-
-
-
 
 

@@ -1,5 +1,5 @@
 library(Assignment4)
-
+library(testthat)
 
 test_that("fars_read_years", {
   # warning when a year does not exist
