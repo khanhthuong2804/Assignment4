@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of Assignment4 is to ...
+The goal of Assignment4 is to creat a new package as required on coursera
 
 ## Installation
 
@@ -23,3 +23,4 @@ library(Assignment4)
 ## basic example code
 ```
 
+[![Build Status](https://travis-ci.org/khanhthuong2804/Assignment4.svg?branch=master)](https://travis-ci.org/khanhthuong2804/Assignment4)
