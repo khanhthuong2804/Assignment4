@@ -78,14 +78,4 @@ fars_map_state <- function(state.num, year) {
   })
 }
 
-#create vignette
-use_vignette("model_details")
-
-#create travis
-
-library(devtools)
-use_travis()
-
-#create readme
-use_readme_md(open = rlang::is_interactive())
 
