@@ -33,3 +33,5 @@ This is a basic example which shows you how to solve a common problem:
 library(Assignment4)
 ## basic example code
 ```
+
+https://travis-ci.org/khanhthuong2804/Assignment4.svg?branch=master
